@@ -5,7 +5,7 @@ function HomePage() {
         <p className="eyebrow">Choose a client</p>
         <h2>Open a blog tool in a new tab</h2>
       </div>
-      <p>Use the links above for creating blogs later or reading blogs now.</p>
+      <p>Use the links above to create a blog or read existing posts in separate tabs.</p>
     </section>
   )
 }

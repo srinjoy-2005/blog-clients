@@ -1,10 +1,11 @@
 import { useEffect, useMemo, useState } from 'react'
-import LoadingTimer from './LoadingTimer'
 import BlogCard from './BlogCard'
+import FullBlog from './FullBlog'
+import LoadingTimer from './LoadingTimer'
 
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:3000'
 
-function ReadBlogsPage() {
+function BlogReader() {
   const [posts, setPosts] = useState([])
   const [postsLoading, setPostsLoading] = useState(true)
   const [postsError, setPostsError] = useState('')
@@ -132,43 +133,21 @@ function ReadBlogsPage() {
         <div className="blog-grid">
           {sortedPosts.map((post) => (
             <BlogCard
-              key={post.id}
-              post={post}
+              commentRequest={commentRequests[post.id]}
+              comments={commentsByPostId[post.id]}
               isActive={selectedPostId === post.id}
-              commentsByPostId={commentsByPostId}
-              commentRequests={commentRequests}
-              onSelectPost={fetchFullPost}
-              onToggleComments={fetchComments}
+              key={post.id}
+              onCommentsOpen={() => fetchComments(post.id)}
+              onOpen={() => fetchFullPost(post.id)}
+              post={post}
             />
           ))}
         </div>
       </section>
 
-      <aside className="full-blog">
-        <div className="section-heading">
-          <div>
-            <p className="eyebrow">Selected blog</p>
-            <h2>Full post</h2>
-          </div>
-          {selectedPostLoading && <LoadingTimer label="Opening blog" />}
-        </div>
-
-        {selectedPostError && <p className="status error">{selectedPostError}</p>}
-
-        {!selectedPostLoading && !selectedPost && !selectedPostError && (
-          <p className="status">Click a blog card to request and read the full post.</p>
-        )}
-
-        {selectedPost && !selectedPostLoading && (
-          <article className="full-blog-card">
-            <span className="blog-id">#{selectedPost.id}</span>
-            <h2>{selectedPost.title}</h2>
-            <p>{selectedPost.body}</p>
-          </article>
-        )}
-      </aside>
+      <FullBlog error={selectedPostError} loading={selectedPostLoading} post={selectedPost} />
     </>
   )
 }
 
-export default ReadBlogsPage
+export default BlogReader

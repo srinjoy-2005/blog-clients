@@ -1,19 +1,19 @@
-import { Routes, Route, Navigate } from 'react-router-dom'
 import './App.css'
 import AppHeader from './components/AppHeader'
+import BlogReader from './components/BlogReader'
 import CreateBlogPage from './components/CreateBlogPage'
-import ReadBlogsPage from './components/ReadBlogsPage'
+import HomePage from './components/HomePage'
 
 function App() {
+  const route = window.location.pathname
+
   return (
     <main className="app-shell">
       <AppHeader />
 
-      <Routes>
-        <Route path="/" element={<Navigate to="/read" replace />} />
-        <Route path="/read" element={<ReadBlogsPage />} />
-        <Route path="/create" element={<CreateBlogPage />} />
-      </Routes>
+      {route === '/create' && <CreateBlogPage />}
+      {route === '/read' && <BlogReader />}
+      {route !== '/create' && route !== '/read' && <HomePage />}
     </main>
   )
 }

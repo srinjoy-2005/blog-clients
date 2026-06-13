@@ -1,5 +1,3 @@
-import { Link } from 'react-router-dom'
-
 function AppHeader() {
   return (
     <header className="app-header">
@@ -8,12 +6,12 @@ function AppHeader() {
       </div>
 
       <nav className="top-nav" aria-label="Blog sections">
-        <Link to="/create">
+        <a href="/create" rel="noopener noreferrer" target="_blank">
           Create Blog
-        </Link>
-        <Link to="/read">
+        </a>
+        <a href="/read" rel="noopener noreferrer" target="_blank">
           Read Blogs
-        </Link>
+        </a>
       </nav>
     </header>
   )

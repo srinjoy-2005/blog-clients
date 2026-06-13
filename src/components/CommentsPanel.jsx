@@ -1,13 +1,17 @@
 import LoadingTimer from './LoadingTimer'
 
-function CommentsPanel({ comments, commentRequest, onToggle }) {
+function CommentsPanel({ comments, onOpen, request }) {
   return (
-    <details className="comments-panel" onToggle={onToggle}>
+    <details className="comments-panel" onToggle={(event) => {
+      if (event.currentTarget.open) {
+        onOpen()
+      }
+    }}>
       <summary>Comments</summary>
 
       <div className="comments-list">
-        {commentRequest?.loading && <LoadingTimer label="Fetching comments" />}
-        {commentRequest?.error && <p className="status error">{commentRequest.error}</p>}
+        {request?.loading && <LoadingTimer label="Fetching comments" />}
+        {request?.error && <p className="status error">{request.error}</p>}
         {comments?.length === 0 && <p className="muted">No comments yet.</p>}
         {comments?.map((comment) => (
           <div className="comment" key={comment.id}>
