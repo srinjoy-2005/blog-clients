@@ -1,0 +1,248 @@
+.app-shell {
+  width: min(1180px, calc(100% - 32px));
+  margin: 0 auto;
+  padding: 36px 0 56px;
+  text-align: left;
+}
+
+.app-header,
+.section-heading,
+.notice-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.app-header {
+  margin-bottom: 24px;
+}
+
+.app-header h1 {
+  max-width: 720px;
+}
+
+.eyebrow {
+  margin-bottom: 8px;
+  color: var(--accent);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.top-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.top-nav a,
+.blog-card-button,
+.comments-panel summary {
+  border-radius: 999px;
+  transition:
+    border-color 180ms ease,
+    box-shadow 180ms ease,
+    transform 180ms ease;
+}
+
+.top-nav a {
+  border: 1px solid var(--border);
+  padding: 10px 16px;
+  color: var(--text-h);
+  background: var(--social-bg);
+  text-decoration: none;
+}
+
+.top-nav a:hover,
+.blog-card:hover,
+.blog-card.active {
+  border-color: var(--accent-border);
+  box-shadow: var(--shadow);
+}
+
+.notice-card,
+.reader-layout,
+.full-blog {
+  border: 1px solid var(--border);
+  border-radius: 24px;
+  background: color-mix(in srgb, var(--bg) 88%, var(--social-bg));
+}
+
+.notice-card {
+  margin-bottom: 24px;
+  padding: 22px;
+}
+
+.reader-layout,
+.full-blog {
+  padding: 24px;
+}
+
+.full-blog {
+  margin-top: 24px;
+}
+
+.blog-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 16px;
+  margin-top: 20px;
+}
+
+.blog-card {
+  display: flex;
+  min-height: 280px;
+  flex-direction: column;
+  justify-content: space-between;
+  border: 1px solid var(--border);
+  border-radius: 22px;
+  background: var(--bg);
+  overflow: hidden;
+  transition:
+    border-color 180ms ease,
+    box-shadow 180ms ease;
+}
+
+.blog-card-button {
+  flex: 1;
+  border: 0;
+  border-radius: 0;
+  padding: 20px;
+  color: inherit;
+  background: transparent;
+  text-align: left;
+  cursor: pointer;
+}
+
+.blog-card-button:hover,
+.blog-card-button:focus-visible {
+  transform: translateY(-2px);
+}
+
+.blog-card-button:focus-visible,
+.top-nav a:focus-visible,
+.comments-panel summary:focus-visible {
+  outline: 3px solid var(--accent-border);
+  outline-offset: 2px;
+}
+
+.blog-id {
+  display: inline-flex;
+  margin-bottom: 12px;
+  border-radius: 999px;
+  padding: 4px 10px;
+  color: var(--accent);
+  background: var(--accent-bg);
+  font-family: var(--mono);
+  font-size: 0.78rem;
+}
+
+.blog-card h3,
+.full-blog-card h2 {
+  margin: 0 0 12px;
+  color: var(--text-h);
+  line-height: 1.15;
+}
+
+.blog-card h3 {
+  font-size: 1.25rem;
+}
+
+.comments-panel {
+  border-top: 1px solid var(--border);
+  padding: 12px 16px 16px;
+}
+
+.comments-panel summary {
+  width: fit-content;
+  padding: 7px 12px;
+  color: var(--text-h);
+  background: var(--social-bg);
+  cursor: pointer;
+  font-weight: 700;
+}
+
+.comments-list {
+  display: grid;
+  max-height: 180px;
+  gap: 10px;
+  margin-top: 12px;
+  overflow-y: auto;
+  padding-right: 6px;
+}
+
+.comment {
+  border-left: 3px solid var(--accent-border);
+  padding: 8px 0 8px 12px;
+}
+
+.comment strong {
+  color: var(--text-h);
+  font-size: 0.88rem;
+}
+
+.full-blog-card {
+  margin-top: 18px;
+  border-radius: 18px;
+  padding: 22px;
+  background: var(--bg);
+}
+
+.full-blog-card p {
+  max-width: 78ch;
+  white-space: pre-wrap;
+}
+
+.loading-timer {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  width: fit-content;
+  border-radius: 999px;
+  padding: 8px 12px;
+  color: var(--text-h);
+  background: var(--accent-bg);
+  font-family: var(--mono);
+  font-size: 0.82rem;
+}
+
+.spinner {
+  width: 12px;
+  height: 12px;
+  border: 2px solid var(--accent-border);
+  border-top-color: var(--accent);
+  border-radius: 999px;
+  animation: spin 700ms linear infinite;
+}
+
+.status,
+.muted {
+  margin-top: 16px;
+}
+
+.error {
+  color: #dc2626;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (max-width: 720px) {
+  .app-header,
+  .section-heading,
+  .notice-card {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .reader-layout,
+  .full-blog,
+  .notice-card {
+    padding: 18px;
+  }
+}
