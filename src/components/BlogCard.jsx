@@ -1,6 +1,6 @@
 import CommentsPanel from './CommentsPanel'
 
-const BLOG_PREVIEW_LENGTH = 140
+const BLOG_PREVIEW_LENGTH = 50
 
 function getPreview(text = '') {
   if (text.length <= BLOG_PREVIEW_LENGTH) {

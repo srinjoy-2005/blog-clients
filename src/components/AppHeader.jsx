@@ -2,14 +2,14 @@ function AppHeader() {
   return (
     <header className="app-header">
       <div>
-        <h1>Srinjoy's Blog</h1>
+        <h1>Bloggit</h1>
       </div>
 
       <nav className="top-nav" aria-label="Blog sections">
-        <a href="/create" rel="noopener noreferrer" target="_blank">
+        <a href="/create">
           Create Blog
         </a>
-        <a href="/read" rel="noopener noreferrer" target="_blank">
+        <a href="/read">
           Read Blogs
         </a>
       </nav>

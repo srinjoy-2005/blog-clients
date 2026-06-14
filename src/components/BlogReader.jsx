@@ -2,6 +2,7 @@ import { useEffect, useMemo, useState } from 'react'
 import BlogCard from './BlogCard'
 import FullBlog from './FullBlog'
 import LoadingTimer from './LoadingTimer'
+import CustomButton from './CustomButton'
 
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:3000'
 
@@ -14,6 +15,7 @@ function BlogReader() {
   const [selectedPostError, setSelectedPostError] = useState('')
   const [commentsByPostId, setCommentsByPostId] = useState({})
   const [commentRequests, setCommentRequests] = useState({})
+  const [retryCount,setRetryCount] = useState(0);
 
   useEffect(() => {
     let ignore = false
@@ -30,7 +32,7 @@ function BlogReader() {
         }
 
         const postList = await response.json()
-
+        
         if (!ignore) {
           setPosts(Array.isArray(postList) ? postList : [])
         }
@@ -50,7 +52,7 @@ function BlogReader() {
     return () => {
       ignore = true
     }
-  }, [])
+  }, [retryCount])
 
   const selectedPostId = selectedPost?.id
 
@@ -130,6 +132,9 @@ function BlogReader() {
           <p className="status">No blogs found yet.</p>
         )}
 
+        <button id="retry-fetch-posts" onClick={()=>setRetryCount(retryCount+1)}>Retry ({retryCount})</button>
+        <CustomButton></CustomButton>
+        
         <div className="blog-grid">
           {sortedPosts.map((post) => (
             <BlogCard

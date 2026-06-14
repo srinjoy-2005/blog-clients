@@ -39,7 +39,8 @@
 
 .top-nav a,
 .blog-card-button,
-.comments-panel summary {
+.comments-panel summary,
+#retry-fetch-posts {
   border-radius: 999px;
   transition:
     border-color 180ms ease,
@@ -318,3 +319,4 @@
     padding: 18px;
   }
 }
+
